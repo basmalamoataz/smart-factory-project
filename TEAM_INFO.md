@@ -1,4 +1,4 @@
-# Smart Factory Project — Shared Connection Info
+# Shared Connection Info
 
 ## MQTT Broker (HiveMQ Cloud, free tier)
 - Cluster URL: `aa0f2fd81d884e9595bd4ef646c78fd8.s1.eu.hivemq.cloud`
