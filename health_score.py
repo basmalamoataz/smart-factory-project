@@ -10,12 +10,16 @@ PASSWORD = "Factory2026!Sim"
 # Topic لاستقبال بيانات الحساسات
 SUB_TOPIC = "nti_smartfactory_teamX/factory/#"
 
+# Topic لإرسال نتيجة Health Score
+PUB_TOPIC = "nti_smartfactory_teamX/factory/health"
+
 # لتخزين آخر قراءة لكل ماكينة
 machines = {}
 
 # حساب Health Score
 def calculate_health(data):
     score = 100
+
     temp = data.get("temperature", 0)
     vib = data.get("vibration", 0)
     current = data.get("current", 0)
@@ -23,10 +27,13 @@ def calculate_health(data):
 
     if temp > 70:
         score -= 20
+
     if vib > 5:
         score -= 25
+
     if current > 15:
         score -= 20
+
     if rpm < 1200 or rpm > 1800:
         score -= 15
 
@@ -38,6 +45,7 @@ def calculate_health(data):
         status = "Critical"
 
     diagnosis = "Normal"
+
     if temp > 70 and vib > 5:
         diagnosis = "Possible Bearing Failure"
     elif temp > 70:
@@ -49,10 +57,12 @@ def calculate_health(data):
 
     return score, status, diagnosis
 
+
 # عند الاتصال
 def on_connect(client, userdata, flags, rc, properties=None):
     print("Connected")
     client.subscribe(SUB_TOPIC)
+
 
 # عند استقبال رسالة
 def on_message(client, userdata, msg):
@@ -77,25 +87,29 @@ def on_message(client, userdata, msg):
 
     if len(machines[machine]) == 4:
         score, status, diagnosis = calculate_health(machines[machine])
+
         result = {
             "machine": machine,
             "health_score": score,
             "status": status,
             "diagnosis": diagnosis
         }
+
         print(result)
 
-        # نشر على topic خاص بكل ماكينة (بدل topic واحد مشترك)
-        pub_topic = f"nti_smartfactory_teamX/factory/{machine}/health"
-        client.publish(pub_topic, json.dumps(result))
+        client.publish(PUB_TOPIC, json.dumps(result))
 
         # تصفير القراءات عشان الدورة الجاية
         machines[machine] = {}
 
+
 client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 client.username_pw_set(USERNAME, PASSWORD)
 client.tls_set()
+
 client.on_connect = on_connect
 client.on_message = on_message
+
 client.connect(BROKER, PORT)
+
 client.loop_forever()
