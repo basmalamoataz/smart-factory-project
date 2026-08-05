@@ -55,8 +55,11 @@ def on_message(client, userdata, msg):
 
         create_ticket(machine, score, diagnosis)
 
-        publish_alarm(client, machine, diagnosis)
+        publish_alarm(client, machine, True)
 
+    else:
+
+        publish_alarm(client, machine, False)
 
 ## --------------------telegram notification------------------------------
 
@@ -87,7 +90,6 @@ def send_notification(machine, score, diagnosis):
         print("Telegram Notification Sent")
     else:
         print("Telegram Error:", response.text)
-
 
 ##--------------------create ticket-----------------------------------
 ticket_counter = 1
@@ -226,23 +228,18 @@ def save_history(machine, score, diagnosis):
 
     print("History Saved")
 
-
 ##--------------------publish active alarm------------------------------
 
-def publish_alarm(client, machine, diagnosis):
+def publish_alarm(client, machine, alarm_state):
 
     alarm = {
         "machine": machine,
-        "status": "Critical",
-        "diagnosis": diagnosis,
-        "alarm": "ON",
-        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        "alarm": "ON" if alarm_state else "OFF"
     }
 
     client.publish(ALARM_TOPIC, json.dumps(alarm))
 
-    print("Alarm Published")
-
+    print(f"{machine} Alarm = {alarm['alarm']}")
 
 #-------------------------------------------------------------
 
