@@ -1,0 +1,486 @@
+[
+    {
+        "id": "edc620f392ac528a",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9f0af9e5bc7c8d3e",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "7365b1219c2e7f47",
+        "type": "ui_group",
+        "name": "ON",
+        "tab": "",
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3a75f7e0d5e77f5d",
+        "type": "ui_tab",
+        "name": "Default",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "e25e36dc8fb1a094",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "7a478c33d15452e2",
+        "type": "ui_group",
+        "name": "Home",
+        "tab": "3a75f7e0d5e77f5d",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a5e82a1be88cb515",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "aa0f2fd81d884e9595bd4ef646c78fd8.s1.eu.hivemq.cloud",
+        "port": "8883",
+        "tls": "",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ec60562d98d1070f",
+        "type": "mqtt in",
+        "z": "edc620f392ac528a",
+        "name": "Health - Machine1",
+        "topic": "nti_smartfactory_teamX/factory/machine1/health",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a5e82a1be88cb515",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "2b150b774b7ceef6"
+            ]
+        ]
+    },
+    {
+        "id": "9025088dfc51f027",
+        "type": "mqtt in",
+        "z": "edc620f392ac528a",
+        "name": "Health - Machine2",
+        "topic": "nti_smartfactory_teamX/factory/machine2/health",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a5e82a1be88cb515",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 200,
+        "wires": [
+            [
+                "c5874479c3ab0d25"
+            ]
+        ]
+    },
+    {
+        "id": "c8ab614da87ad4e9",
+        "type": "mqtt in",
+        "z": "edc620f392ac528a",
+        "name": "Health - Machine3",
+        "topic": "nti_smartfactory_teamX/factory/machine3/health",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a5e82a1be88cb515",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 280,
+        "wires": [
+            [
+                "dc71c3c5d0f65674"
+            ]
+        ]
+    },
+    {
+        "id": "790e96e594df46fe",
+        "type": "mqtt in",
+        "z": "edc620f392ac528a",
+        "name": "Health - Machine4",
+        "topic": "nti_smartfactory_teamX/factory/machine4/health",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a5e82a1be88cb515",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 380,
+        "wires": [
+            [
+                "3dbe30ea85e154bd"
+            ]
+        ]
+    },
+    {
+        "id": "2b150b774b7ceef6",
+        "type": "function",
+        "z": "edc620f392ac528a",
+        "name": "Track History - Machine1",
+        "func": "\nconst machine = \"machine1\"; \n\nlet history = flow.get(\"healthHistory\") || {};\nconst score = msg.payload.health_score;\nconst now = Date.now();\n\nif (!history[machine]) {\n    history[machine] = [];\n}\n\nhistory[machine].push({ score: score, time: now });\n\nif (history[machine].length > 200) {\n    history[machine].shift(); // keep memory bounded\n}\n\nflow.set(\"healthHistory\", history);\n\nmsg.payload = { machine: machine };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 120,
+        "wires": [
+            [
+                "85fd4cf6ea6bba1c",
+                "f3bf1db735d7fc09"
+            ]
+        ]
+    },
+    {
+        "id": "c5874479c3ab0d25",
+        "type": "function",
+        "z": "edc620f392ac528a",
+        "name": "Track History - Machine2",
+        "func": "\nconst machine = \"machine2\"; \n\nlet history = flow.get(\"healthHistory\") || {};\nconst score = msg.payload.health_score;\nconst now = Date.now();\n\nif (!history[machine]) {\n    history[machine] = [];\n}\n\nhistory[machine].push({ score: score, time: now });\n\nif (history[machine].length > 200) {\n    history[machine].shift(); // keep memory bounded\n}\n\nflow.set(\"healthHistory\", history);\n\nmsg.payload = { machine: machine };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 200,
+        "wires": [
+            [
+                "85fd4cf6ea6bba1c",
+                "f3bf1db735d7fc09"
+            ]
+        ]
+    },
+    {
+        "id": "dc71c3c5d0f65674",
+        "type": "function",
+        "z": "edc620f392ac528a",
+        "name": "Track History - Machine3",
+        "func": "const machine = \"machine3\"; \n\nlet history = flow.get(\"healthHistory\") || {};\nconst score = msg.payload.health_score;\nconst now = Date.now();\n\nif (!history[machine]) {\n    history[machine] = [];\n}\n\nhistory[machine].push({ score: score, time: now });\n\nif (history[machine].length > 200) {\n    history[machine].shift(); // keep memory bounded\n}\n\nflow.set(\"healthHistory\", history);\n\nmsg.payload = { machine: machine };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 280,
+        "wires": [
+            [
+                "85fd4cf6ea6bba1c",
+                "f3bf1db735d7fc09"
+            ]
+        ]
+    },
+    {
+        "id": "3dbe30ea85e154bd",
+        "type": "function",
+        "z": "edc620f392ac528a",
+        "name": "Track History - Machine4",
+        "func": "\nconst machine = \"machine4\"; \n\nlet history = flow.get(\"healthHistory\") || {};\nconst score = msg.payload.health_score;\nconst now = Date.now();\n\nif (!history[machine]) {\n    history[machine] = [];\n}\n\nhistory[machine].push({ score: score, time: now });\n\nif (history[machine].length > 200) {\n    history[machine].shift(); // keep memory bounded\n}\n\nflow.set(\"healthHistory\", history);\n\nmsg.payload = { machine: machine };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 380,
+        "wires": [
+            [
+                "85fd4cf6ea6bba1c",
+                "f3bf1db735d7fc09"
+            ]
+        ]
+    },
+    {
+        "id": "85fd4cf6ea6bba1c",
+        "type": "function",
+        "z": "edc620f392ac528a",
+        "name": "Calculate MTBF & MTTR",
+        "func": "const CRITICAL_THRESHOLD = 50; \n\nlet history = flow.get(\"healthHistory\") || {};\nconst machine = msg.payload.machine;\nconst records = history[machine] || [];\n\nif (records.length < 2) {\n    return null; // not enough data yet\n}\n\nlet failures = [];\nlet inFailure = false;\nlet failureStart = null;\n\nfor (let i = 0; i < records.length; i++) {\n    const r = records[i];\n    if (r.score < CRITICAL_THRESHOLD && !inFailure) {\n        inFailure = true;\n        failureStart = r.time;\n    } else if (r.score >= CRITICAL_THRESHOLD && inFailure) {\n        inFailure = false;\n        failures.push({ start: failureStart, end: r.time });\n    }\n}\n\nlet mtbf = null;\nlet mttr = null;\n\nif (failures.length > 0) {\n    const totalDowntime = failures.reduce((sum, f) => sum + (f.end - f.start), 0);\n    mttr = (totalDowntime / failures.length) / 1000; // seconds\n\n    if (failures.length > 1) {\n        let gaps = [];\n        for (let i = 1; i < failures.length; i++) {\n            gaps.push(failures[i].start - failures[i - 1].start);\n        }\n        const totalGap = gaps.reduce((a, b) => a + b, 0);\n        mtbf = (totalGap / gaps.length) / 1000; // seconds\n    } else {\n        const totalTime = (records[records.length - 1].time - records[0].time) / 1000;\n        mtbf = totalTime;\n    }\n}\n\nmsg.payload = {\n    machine: machine,\n    mtbf_seconds: mtbf ? Math.round(mtbf) : null,\n    mttr_seconds: mttr ? Math.round(mttr) : null,\n    failureCount: failures.length,\n    timestamp: new Date().toISOString()\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 180,
+        "wires": [
+            [
+                "1b73011db43bbd92",
+                "3bf729282631f43e"
+            ]
+        ]
+    },
+    {
+        "id": "f3bf1db735d7fc09",
+        "type": "function",
+        "z": "edc620f392ac528a",
+        "name": "Calculate RUL",
+        "func": "const CRITICAL_THRESHOLD = 50;\n\nlet history = flow.get(\"healthHistory\") || {};\nconst machine = msg.payload.machine;\nconst records = history[machine] || [];\n\nif (records.length < 5) {\n    return null;\n}\n\nconst recent = records.slice(-10);\nconst first = recent[0];\nconst last = recent[recent.length - 1];\n\nconst scoreDrop = first.score - last.score;\nconst timeElapsedMinutes = (last.time - first.time) / 1000 / 60;\n\nlet rulMinutes = null;\n\nif (scoreDrop > 0 && timeElapsedMinutes > 0) {\n    const declineRatePerMinute = scoreDrop / timeElapsedMinutes;\n    const distanceToFailure = last.score - CRITICAL_THRESHOLD;\n    rulMinutes = distanceToFailure > 0 ? distanceToFailure / declineRatePerMinute : 0;\n}\n\nmsg.payload = {\n    machine: machine,\n    rul_minutes: rulMinutes !== null ? Math.round(rulMinutes * 10) / 10 : null,\n    currentHealthScore: last.score,\n    timestamp: new Date().toISOString()\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 280,
+        "wires": [
+            [
+                "eb33bba3e38cd362",
+                "a5ac96dc537d3818"
+            ]
+        ]
+    },
+    {
+        "id": "1b73011db43bbd92",
+        "type": "debug",
+        "z": "edc620f392ac528a",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "eb33bba3e38cd362",
+        "type": "debug",
+        "z": "edc620f392ac528a",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "3bf729282631f43e",
+        "type": "mqtt out",
+        "z": "edc620f392ac528a",
+        "name": "",
+        "topic": "nti_smartfactory_teamX/analytics/reliability",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a5e82a1be88cb515",
+        "x": 1290,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a5ac96dc537d3818",
+        "type": "mqtt out",
+        "z": "edc620f392ac528a",
+        "name": "",
+        "topic": "nti_smartfactory_teamX/analytics/rul",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a5e82a1be88cb515",
+        "x": 1270,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "d88c69d71228627e",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
