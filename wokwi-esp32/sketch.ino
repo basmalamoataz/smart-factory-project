@@ -2,7 +2,7 @@
 #include <WiFiClientSecure.h>
 #include <PubSubClient.h>
 
-]const char* ssid = "Wokwi-GUEST";
+const char* ssid = "Wokwi-GUEST";
 const char* password = "";
 
 const char* mqtt_server = "aa0f2fd81d884e9595bd4ef646c78fd8.s1.eu.hivemq.cloud";
@@ -24,10 +24,19 @@ int demoTick = 0;
 unsigned long lastPublish = 0;
 const unsigned long publishInterval = 3000;
 
+bool machine2Recovering = false;
+
 const int potTemp       = 32; // temperature
 const int potVibration  = 33; // vibration
 const int potCurrent    = 34; // current
 const int potRpm        = 35; // rpm
+
+// Forward declarations (required by PlatformIO)
+void connectMQTT();
+float randomFloat(float minV, float maxV);
+float clampf(float v, float lo, float hi);
+float potOffset(int pin, float range);
+void publishSensor(int i, const char* sensor, float value, const char* unit);
 
 void setup() {
   Serial.begin(115200);
@@ -71,7 +80,7 @@ float clampf(float v, float lo, float hi) {
 
 float potOffset(int pin, float range) {
   int raw = analogRead(pin);
-  float normalized = ((float)raw / 4095.0) - 0.5; 
+  float normalized = ((float)raw / 4095.0) - 0.5;
   return normalized * range;
 }
 
@@ -96,14 +105,28 @@ void loop() {
 
     for (int i = 0; i < 4; i++) {
       if (i == 1) {
+        // ---- Machine 2: real potentiometer readings + automatic overheat/recover cycle (SPED UP for demo) ----
         temperature[i] += randomFloat(-0.5, 0.5) + potOffset(potTemp, 1.0);
         vibration[i]   += randomFloat(-0.1, 0.1) + potOffset(potVibration, 0.2);
         current[i]     += randomFloat(-0.2, 0.2) + potOffset(potCurrent, 0.4);
         rpm[i]         += randomFloat(-10, 10)   + potOffset(potRpm, 20);
 
         if (demoTick > 5) {
-          if (temperature[i] < 95) temperature[i] += 0.8;
-          if (vibration[i] < 12) vibration[i] += 0.15;
+          if (!machine2Recovering) {
+            temperature[i] += 3.0;
+            vibration[i] += 0.5;
+
+            if (temperature[i] >= 90) {
+              machine2Recovering = true;
+            }
+          } else {
+            temperature[i] -= 4.0;
+            vibration[i] -= 0.6;
+
+            if (temperature[i] <= 45) {
+              machine2Recovering = false;
+            }
+          }
         }
 
         temperature[i] = clampf(temperature[i], 20, 100);
@@ -112,6 +135,7 @@ void loop() {
         rpm[i]         = clampf(rpm[i], 1200, 1800);
 
       } else {
+        // ---- Machines 1, 3, 4: normal software-simulated fluctuation ----
         temperature[i] += randomFloat(-0.5, 0.5);
         vibration[i]   += randomFloat(-0.1, 0.1);
         current[i]     += randomFloat(-0.2, 0.2);
