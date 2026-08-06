@@ -12,7 +12,7 @@ USERNAME = "smartfactory_sim"
 PASSWORD = "Factory2026!Sim"
 
 
-TOPIC = "nti_smartfactory_teamX/factory/health"
+TOPIC = "nti_smartfactory_teamX/factory/+/health"
 ALARM_TOPIC = "nti_smartfactory_teamX/factory/alarm"
 
 
