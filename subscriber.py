@@ -13,7 +13,6 @@ PASSWORD = "Factory2026!Sim"
 
 
 TOPIC = "nti_smartfactory_teamX/factory/+/health"
-ALARM_TOPIC = "nti_smartfactory_teamX/factory/alarm"
 
 
 client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
@@ -61,7 +60,6 @@ def on_message(client, userdata, msg):
 
         publish_alarm(client, machine, False)
 
-## --------------------telegram notification------------------------------
 
 # BOT_TOKEN = "YOUR_BOT_TOKEN"
 # CHAT_ID = "YOUR_CHAT_ID"
@@ -190,7 +188,6 @@ def create_ticket(machine, score, diagnosis):
     print(f"Ticket {ticket_id} Created")
 
 
-##--------------------save history-----------------------------------
 
 def save_history(machine, score, diagnosis):
 
@@ -228,20 +225,17 @@ def save_history(machine, score, diagnosis):
 
     print("History Saved")
 
-##--------------------publish active alarm------------------------------
 
 def publish_alarm(client, machine, alarm_state):
 
-    alarm = {
-        "machine": machine,
-        "alarm": "ON" if alarm_state else "OFF"
-    }
+    # FIXED: publish per-machine, matching the dashboard's expected topic structure
+    alarm_topic = f"nti_smartfactory_teamX/factory/{machine}/alarm"
+    payload = "ON" if alarm_state else "OFF"
 
-    client.publish(ALARM_TOPIC, json.dumps(alarm))
+    client.publish(alarm_topic, payload)
 
-    print(f"{machine} Alarm = {alarm['alarm']}")
+    print(f"{machine} Alarm = {payload}")
 
-#-------------------------------------------------------------
 
 client.on_connect = on_connect
 client.on_message = on_message
